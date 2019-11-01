@@ -61,5 +61,10 @@ namespace HPIT.Logistic.PM.BLL
         {
             return dal.DeleteUser(userId);
         }
+
+        public dynamic GetDynamicList()
+        {
+            return dal.GetDynamicList();
+        }
     }
 }

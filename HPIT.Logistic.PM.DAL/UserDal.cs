@@ -245,5 +245,14 @@ namespace HPIT.Logistic.PM.DAL
             return users;
         }
 
+
+        public dynamic GetDynamicList()
+        {
+            Int32[] ids = new Int32[] { 1, 4, 5 };
+            var result = DapperDBHelper.Instance.ExcuteQuery<dynamic, dynamic>(@"select * from (select *,(select RoleName from [Role] where RoleID = u.FK_RoleID ) as RoleName  from [User] u) t
+                                                                                 where t.UserID not in @ids and t.RoleName=@roleName", new { ids, roleName = "系统管理员" });
+            return result;
+        }
+
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserList.aspx.cs" Inherits="HPIT.Logistic.PM.WebApp.Admin.UserList" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TruckTeam.aspx.cs" Inherits="HPIT.Logistic.PM.WebApp.TruckTeamManage.TruckTeam" %>
 
 <!DOCTYPE html>
 
@@ -64,12 +64,12 @@
            <!-- 内容头部 -->
             <section class="content-header">
                 <h1>
-                    <small>用户列表</small>
+                    <small>车队列表</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
-                    <li><a href="#">用户管理</a></li>
-                    <li class="active">用户列表</li>
+                    <li><a href="#">车队管理</a></li>
+                    <li class="active">车队列表</li>
                 </ol>
             </section>
             <!-- 内容头部 /-->
@@ -78,54 +78,47 @@
             <section class="content">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">用户列表</h3>
+                        <h3 class="box-title">车队列表</h3>
                     </div>
                    <%-- <a href="AddUser.aspx" target="_blank">添加用户</a>--%>
                     <div class="box-body">
                         <div class="pull-left">
                                 <div class="form-group form-inline">
                                     <div class="btn-group">
-                                        <a href="AddUser.aspx" class="btn btn-default" target="_self">添加用户</a><br/>
+                                        <a href="AddUser.aspx" class="btn btn-default" target="_self">添加车队</a><br/>
                                     </div>
                                 </div>
                             </div>
                             <div class="box-tools pull-right">
                                 <div class="has-feedback">
                                     <ul>
-                                     <li><label>账号：</label> <asp:TextBox ID="TextBox_Account"  CssClass="form-control input-sm searchInput" runat="server"></asp:TextBox></li>
-                                     <li><label>出生日期：</label> <asp:TextBox ID="TextBox_CreateTime"  CssClass="form-control input-sm searchInput" runat="server"></asp:TextBox></li>
-                                     <li><label>角色类型：</label> <asp:DropDownList ID="DropDownList_Roles" CssClass="form-control input-sm searchInput" runat="server"></asp:DropDownList></li>
+                                     <li><label>车队名：</label> <asp:TextBox ID="TextBox_TeamName"  CssClass="form-control input-sm searchInput" runat="server"></asp:TextBox></li>
                                      <li><asp:Button ID="Button1"  CssClass="btn btn-primary" runat="server" Text="查询" OnClick="Button1_Click" /></li>
                                      </ul>
                                 </div>
                             </div>
-                        <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
+                        <asp:Repeater ID="Repeater1" runat="server">
                         <HeaderTemplate>
                         <table class="table table-bordered table-striped">
                          <tr>
-                             <th>头像</th>
-                             <th>真实姓名</th>
-                             <th>账号</th>
-                             <th>性别</th>
-                             <th>电话</th>
-                             <th>角色名</th>
+                             <th>车队名</th>
+                             <th>领导人</th>
+                             <th>备注</th>
                              <th>创建时间</th>
+                             <th>修改时间</th>
                              <th style="width:200px;text-align:center;">操作</th>
                          </tr>
                         </HeaderTemplate>
                         <ItemTemplate>
                            <tr>
-                               <%--<td><%#((dynamic)Container.DataItem).UserName%></td>--%>
-                             <td><img src='/Handlers/GetImage.ashx?path=<%#Eval("ImagePath")%>' style="width:60px;height:60px;" /></td>
-                             <td><%#Eval("UserName")%></td>
-                             <td><%#Eval("Account")%></td>
-                             <td><%# (int)Eval("Sex")==0 ? "男":"女" %></td>
-                             <td><%#Eval("Phone")%></td>
-                             <td><%#Eval("RoleName")%></td>
-                             <td><%#Eval("CheckInTime")%></td>
+                             <td><%#((dynamic)Container.DataItem).TeamName%></td>
+                             <td><%#((dynamic)Container.DataItem).Leader%></td>
+                             <td><%#((dynamic)Container.DataItem).Remark%></td>
+                             <td><%#((dynamic)Container.DataItem).CheckInTime%></td>
+                             <td><%#((dynamic)Container.DataItem).AlterTime%></td>
                              <td style="text-align:center;">
-                                 <asp:LinkButton ID="LinkButton1" CssClass="btn bg-olive btn-xs" runat="server" CommandName="update" CommandArgument='<%#Eval("UserID")%>'>编辑</asp:LinkButton>
-                                 <asp:LinkButton ID="LinkButton2" CssClass="btn bg-olive btn-xs" runat="server" CommandName="delete" CommandArgument='<%#Eval("UserID")%>'>删除</asp:LinkButton>
+                                 <asp:LinkButton ID="LinkButton1" CssClass="btn bg-olive btn-xs" runat="server" CommandName="update" CommandArgument='<%#((dynamic)Container.DataItem).TeamID%>'>编辑</asp:LinkButton>
+                                 <asp:LinkButton ID="LinkButton2" CssClass="btn bg-olive btn-xs" runat="server" CommandName="delete" CommandArgument='<%#((dynamic)Container.DataItem).TeamID%>'>删除</asp:LinkButton>
                              </td>
                            </tr>
                         </ItemTemplate>

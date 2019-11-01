@@ -35,5 +35,8 @@ namespace HPIT.Logistic.PM.Model
         public string ImagePath { get; set; }
 
         public string RoleName { get; set; }
+
+
+        public int FK_RoleID { get; set; }
     }
 }

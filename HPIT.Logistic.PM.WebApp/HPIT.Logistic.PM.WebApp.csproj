@@ -1085,6 +1085,7 @@
     <Content Include="plugins\treeTable\jquery.treetable.css" />
     <Content Include="plugins\treeTable\jquery.treetable.js" />
     <Content Include="plugins\treeTable\jquery.treetable.theme.default.css" />
+    <Content Include="TruckTeamManage\TruckTeam.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -1130,6 +1131,13 @@
       <DependentUpon>Main.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TruckTeamManage\TruckTeam.aspx.cs">
+      <DependentUpon>TruckTeam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TruckTeamManage\TruckTeam.aspx.designer.cs">
+      <DependentUpon>TruckTeam.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Handlers\GetImage.ashx" />
@@ -1194,12 +1202,15 @@
     <Folder Include="DriverManage\" />
     <Folder Include="Models\" />
     <Folder Include="TruckManage\" />
-    <Folder Include="TruckTeamManage\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HPIT.Logistic.PM.BLL\HPIT.Logistic.PM.BLL.csproj">
       <Project>{35752159-cf57-4efe-bc05-2e0b9b0edd21}</Project>
       <Name>HPIT.Logistic.PM.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HPIT.Logistic.PM.DAL\HPIT.Logistic.PM.DAL.csproj">
+      <Project>{1715e8ab-02ef-4b16-9022-3e32b85415fe}</Project>
+      <Name>HPIT.Logistic.PM.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\HPIT.Logistic.PM.Model\HPIT.Logistic.PM.Model.csproj">
       <Project>{4d0ef1e6-da6e-4929-ad39-3c500881b865}</Project>
