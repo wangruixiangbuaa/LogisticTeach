@@ -1,4 +1,5 @@
 ﻿using HPIT.Logistic.PM.Model;
+using HPIT.Logistics.PM.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -180,6 +181,66 @@ namespace HPIT.Logistic.PM.DAL
             sqlParameters[0] = new SqlParameter("@id", userID);
             int result = DBHelper.ExcuteSqlNonQuery(sql,sqlParameters);
             return result;
+        }
+
+
+        public List<TruckTeamModel> GetTeams(int pageIndex,int pageSize,out int totalCount)
+        {
+            totalCount = 0;
+            string procName = "TeamQueryWithPage";
+            SqlParameter[] sqlParameters = new SqlParameter[3];
+            sqlParameters[0] = new SqlParameter("@PageIndex",pageIndex);
+            sqlParameters[1] = new SqlParameter("@PageSize", pageSize);
+            sqlParameters[2] = new SqlParameter("@TotalCount", totalCount);
+            sqlParameters[2].Direction = System.Data.ParameterDirection.Output;
+            SqlDataReader reader = DBHelper.ExcuteSqlDataReaderProc(procName,sqlParameters);
+            List<TruckTeamModel> teams = new List<TruckTeamModel>();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    TruckTeamModel model = new TruckTeamModel() {
+
+                        Leader = reader["Leader"].ToString(),
+                        Remark = reader["Remark"].ToString(),
+                         CheckInTime =Convert.ToDateTime(reader["CheckInTime"])
+                    };
+                    teams.Add(model);
+                }
+            }
+            return teams;
+        }
+
+        public List<UserModel> GetUsersWithPage(int pageIndex, int pageSize, out int totalCount)
+        {
+            totalCount = 0;
+            string procName = "UserListWithPage";
+            SqlParameter[] sqlParameters = new SqlParameter[3];
+            sqlParameters[0] = new SqlParameter("@PageIndex", pageIndex);
+            sqlParameters[1] = new SqlParameter("@PageSize", pageSize);
+            sqlParameters[2] = new SqlParameter("@TotalCount", totalCount);
+            sqlParameters[2].Direction = System.Data.ParameterDirection.Output;
+            SqlDataReader reader = DBHelper.ExcuteSqlDataReaderProc(procName, sqlParameters);
+            List<UserModel> users = new List<UserModel>();
+            if (reader.HasRows)
+            {
+                //读取第一条数据
+                while (reader.Read())
+                {
+                    UserModel model = new UserModel();
+                    model.UserName = reader["UserName"].ToString();
+                    model.PassWord = reader["Password"].ToString();
+                    model.Phone = reader["Phone"].ToString();
+                    model.Account = reader["Account"].ToString();
+                    model.UserID = int.Parse(reader["UserID"].ToString());
+                    model.CheckInTime = Convert.ToDateTime(reader["CheckInTime"]);
+                    model.ImagePath = reader["ImagePath"].ToString();
+                    model.Sex = Convert.ToInt32(reader["Sex"]);
+                    //model.RoleName = reader["roleName"].ToString();
+                    users.Add(model);
+                }
+            }
+            return users;
         }
 
     }

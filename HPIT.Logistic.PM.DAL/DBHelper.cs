@@ -63,6 +63,28 @@ namespace HPIT.Logistic.PM.DAL
                 }
         }
 
+
+        public static SqlDataReader ExcuteSqlDataReaderProc(string sql, SqlParameter[] sqlParameters)
+        {
+            //创建连接
+            SqlConnection connection = new SqlConnection(connStr);
+            //创建命令
+            using (SqlCommand command = new SqlCommand(sql, connection))
+            {
+                //执行
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
+                //设置查询方式是存储过程。
+                command.CommandType = CommandType.StoredProcedure;
+                //添加参数
+                command.Parameters.AddRange(sqlParameters);
+                //返回结果,及时关闭掉连接
+                return command.ExecuteReader(CommandBehavior.CloseConnection);
+            }
+        }
+
         /// <summary>
         /// 执行插入，删除，更新的方法
         /// </summary>
@@ -77,7 +99,7 @@ namespace HPIT.Logistic.PM.DAL
                 //创建命令
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
-                    //执行
+                    //判断连接是否打开，如果连接是关闭状态，则需要打开连接
                     if (connection.State == ConnectionState.Closed)
                     {
                         connection.Open();
@@ -89,5 +111,8 @@ namespace HPIT.Logistic.PM.DAL
                 }
             }
         }
+
+
+
     }
 }

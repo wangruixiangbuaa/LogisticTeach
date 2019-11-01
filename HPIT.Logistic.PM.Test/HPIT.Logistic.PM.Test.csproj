@@ -56,7 +56,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HPIT.Logistic.PM.DAL\HPIT.Logistic.PM.DAL.csproj">
+      <Project>{1715e8ab-02ef-4b16-9022-3e32b85415fe}</Project>
+      <Name>HPIT.Logistic.PM.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HPIT.Logistic.PM.Model\HPIT.Logistic.PM.Model.csproj">
+      <Project>{4d0ef1e6-da6e-4929-ad39-3c500881b865}</Project>
+      <Name>HPIT.Logistic.PM.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
