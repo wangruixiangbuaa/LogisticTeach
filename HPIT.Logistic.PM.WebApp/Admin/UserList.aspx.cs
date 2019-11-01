@@ -46,7 +46,7 @@ namespace HPIT.Logistic.PM.WebApp.Admin
             //获取搜索参数
             string account = TextBox_Account.Text;
             string time = TextBox_CreateTime.Text;
-            string roleName = DropDownList_Roles.SelectedItem.Value;
+            string roleName = DropDownList_Roles.SelectedItem.Text;
             //查询数据
             DateTime bornTime = string.IsNullOrEmpty(time) ? DateTime.Now : Convert.ToDateTime(time);
             List<UserModel> result = bll.GetUsers(account, bornTime, roleName);

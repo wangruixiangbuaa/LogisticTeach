@@ -15,6 +15,7 @@ namespace HPIT.Logistic.PM.DAL
             string sql = "select * from [LogisticsDB].[dbo].[Role]";
             List<RoleModel> roles = new List<RoleModel>();
             SqlDataReader reader = DBHelper.ExcuteSqlDataReader(sql);
+            roles.Add(new RoleModel() { RoleName = "请选择", RoleID = -1 });
             if (reader.HasRows)
             {
                 while (reader.Read())

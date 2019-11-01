@@ -69,20 +69,22 @@ namespace HPIT.Logistic.PM.DAL
         /// <returns></returns>
         public List<UserModel> GetUserList(string account,DateTime dateTime,string roleName)
         {
-            string sql = @"select *,(select RoleName from [LogisticsDB].[dbo].[Role] where RoleID = u.FK_RoleID ) as roleName 
-                         from[LogisticsDB].[dbo].[User] u where IsDelete != 1 And CheckInTime<@time ";
+            string sql = @"select * from 
+                                  (select *,(select RoleName from [Role] where RoleID = u.FK_RoleID ) as RoleName 
+                                  from [User] u) t 
+                           where t.IsDelete != 1 And t.CheckInTime<@time ";
             //SqlParameter[] sqlParameters = new SqlParameter[3];
             List<SqlParameter> parmsList = new List<SqlParameter>();
             //不是空或null字符串添加参数
             if (!string.IsNullOrEmpty(account))
             {
-                sql += " and Account=@account ";
+                sql += " and t.Account=@account ";
                 parmsList.Add(new SqlParameter("@account", account));
             }
-            if (!string.IsNullOrEmpty(roleName))
+            if (!string.IsNullOrEmpty(roleName) && roleName != "请选择")
             {
-                sql += " and FK_RoleID=@roleId ";
-                parmsList.Add(new SqlParameter("@roleID", roleName));
+                sql += " and t.RoleName=@roleName ";
+                parmsList.Add(new SqlParameter("@roleName", roleName));
             }
             parmsList.Add(new SqlParameter("@time",dateTime));
             SqlDataReader reader = DBHelper.ExcuteSqlDataReader(sql,parmsList.ToArray());

@@ -36,12 +36,13 @@
          }
          .has-feedback ul li {
             float:left;
-            width:250px;
+            width:270px;
             margin-left:5px;
          }
          .has-feedback ul li label {
             float:left;
             margin-top:4px;
+            margin-right: -33px;
          }
          .has-feedback ul li input {
             float:left;
