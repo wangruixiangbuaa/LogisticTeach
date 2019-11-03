@@ -370,13 +370,13 @@
                         <ul class="treeview-menu">
 
                             <li id="admin-truckteam">
-                                <a href="#" class="menu" aurl="UserList.aspx" atitle="车队管理" aid="userlist">
+                                <a href="#" class="menu" aurl="../TruckTeamManage/TruckTeam.aspx" atitle="车队管理" aid="teamlist">
                             <i class="fa fa-circle-o"></i> 车队管理
                         </a>
                             </li>
 
                             <li id="admin-truck">
-                                <a href="#" aurl="RoleList.aspx" atitle="车辆管理" aid="rolelist" class="menu">
+                                <a href="#" aurl="../TruckManage/Truck.aspx" atitle="车辆管理" aid="trucklist" class="menu">
                             <i class="fa fa-circle-o"></i> 车辆管理
                         </a>
                             </li>

@@ -1085,6 +1085,7 @@
     <Content Include="plugins\treeTable\jquery.treetable.css" />
     <Content Include="plugins\treeTable\jquery.treetable.js" />
     <Content Include="plugins\treeTable\jquery.treetable.theme.default.css" />
+    <Content Include="TruckManage\Truck.aspx" />
     <Content Include="TruckTeamManage\TruckTeam.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -1131,6 +1132,13 @@
       <DependentUpon>Main.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TruckManage\Truck.aspx.cs">
+      <DependentUpon>Truck.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TruckManage\Truck.aspx.designer.cs">
+      <DependentUpon>Truck.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TruckTeamManage\TruckTeam.aspx.cs">
       <DependentUpon>TruckTeam.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1201,7 +1209,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="DriverManage\" />
     <Folder Include="Models\" />
-    <Folder Include="TruckManage\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HPIT.Logistic.PM.BLL\HPIT.Logistic.PM.BLL.csproj">

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TruckTeam.aspx.cs" Inherits="HPIT.Logistic.PM.WebApp.TruckTeamManage.TruckTeam" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Truck.aspx.cs" Inherits="HPIT.Logistic.PM.WebApp.TruckManage.Truck" %>
 
 <!DOCTYPE html>
 
@@ -85,7 +85,7 @@
                         <div class="pull-left">
                                 <div class="form-group form-inline">
                                     <div class="btn-group">
-                                        <a href="AddUser.aspx" class="btn btn-default" target="_self">添加车队</a><br/>
+                                        <a href="AddUser.aspx" class="btn btn-default" target="_self">添加车辆</a><br/>
                                     </div>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@
                                 <div class="has-feedback">
                                     <ul>
                                      <li><label>车队名：</label> <asp:TextBox ID="TextBox_TeamName"  CssClass="form-control input-sm searchInput" runat="server"></asp:TextBox></li>
-                                     <li><asp:Button ID="Button1"  CssClass="btn btn-primary" runat="server" Text="查询" OnClick="Button1_Click" /></li>
+                                     <li><asp:Button ID="Button_Search"  CssClass="btn btn-primary" runat="server" Text="查询" OnClick="Button_Search_Click" /></li>
                                      </ul>
                                 </div>
                             </div>
@@ -101,21 +101,29 @@
                         <HeaderTemplate>
                         <table class="table table-bordered table-striped">
                          <tr>
+                             <th>车辆编号</th>
+                             <th>购买日期</th>
+                             <th>类型</th>
+                             <th>长度</th>
+                             <th>吨位</th>
                              <th>车队名</th>
-                             <th>领导人</th>
-                             <th style="width:35%;">备注</th>
+                             <th>状态</th>
+                            <%-- <th>备注</th>--%>
                              <th>创建时间</th>
-                             <th>修改时间</th>
                              <th style="width:200px;text-align:center;">操作</th>
                          </tr>
                         </HeaderTemplate>
                         <ItemTemplate>
                            <tr>
-                             <td><%#((dynamic)Container.DataItem).TeamName%></td>
-                             <td><%#((dynamic)Container.DataItem).Leader%></td>
-                             <td><%#((dynamic)Container.DataItem).Remark%></td>
+                             <td><%#((dynamic)Container.DataItem).Number%></td>
+                             <td><%#((dynamic)Container.DataItem).BuyDate%></td>
+                             <td><%#((dynamic)Container.DataItem).Type%></td>
+                             <td><%#((dynamic)Container.DataItem).Length%></td>
+                             <td><%#((dynamic)Container.DataItem).Tonnage%></td>
+                             <td><%#((dynamic)Container.DataItem).FK_TeamID%></td>
+                             <td><%#((dynamic)Container.DataItem).State%></td>
+                             <%--<td><%#((dynamic)Container.DataItem).Remark%></td>--%>
                              <td><%#((dynamic)Container.DataItem).CheckInTime%></td>
-                             <td><%#((dynamic)Container.DataItem).AlterTime%></td>
                              <td style="text-align:center;">
                                  <asp:LinkButton ID="LinkButton1" CssClass="btn bg-olive btn-xs" runat="server" CommandName="update" CommandArgument='<%#((dynamic)Container.DataItem).TeamID%>'>编辑</asp:LinkButton>
                                  <asp:LinkButton ID="LinkButton2" CssClass="btn bg-olive btn-xs" runat="server" CommandName="delete" CommandArgument='<%#((dynamic)Container.DataItem).TeamID%>'>删除</asp:LinkButton>

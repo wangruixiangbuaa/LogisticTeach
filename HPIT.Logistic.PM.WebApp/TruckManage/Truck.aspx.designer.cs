@@ -7,10 +7,10 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace HPIT.Logistic.PM.WebApp.Admin {
+namespace HPIT.Logistic.PM.WebApp.TruckManage {
     
     
-    public partial class RoleList {
+    public partial class Truck {
         
         /// <summary>
         /// form1 控件。
