@@ -78,7 +78,7 @@ namespace HPIT.Logistic.PM.DAL
             //不是空或null字符串添加参数
             if (!string.IsNullOrEmpty(account))
             {
-                sql += " and t.Account=@account ";
+                sql += " and t.Account=@account";
                 parmsList.Add(new SqlParameter("@account", account));
             }
             if (!string.IsNullOrEmpty(roleName) && roleName != "请选择")

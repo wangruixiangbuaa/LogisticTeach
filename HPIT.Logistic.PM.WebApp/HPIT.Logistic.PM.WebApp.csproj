@@ -75,7 +75,9 @@
     <Content Include="css\nth.tabs.css" />
     <Content Include="css\nth.tabs.min.css" />
     <Content Include="css\style.css" />
+    <Content Include="DriverManage\DriverList.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="GoodsManage\Goods.aspx" />
     <Content Include="img\american-express.png" />
     <Content Include="img\avatar.png" />
     <Content Include="img\avatar04.png" />
@@ -1111,8 +1113,22 @@
     <Compile Include="Admin\UserList.aspx.designer.cs">
       <DependentUpon>UserList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DriverManage\DriverList.aspx.cs">
+      <DependentUpon>DriverList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DriverManage\DriverList.aspx.designer.cs">
+      <DependentUpon>DriverList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="GoodsManage\Goods.aspx.cs">
+      <DependentUpon>Goods.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GoodsManage\Goods.aspx.designer.cs">
+      <DependentUpon>Goods.aspx</DependentUpon>
     </Compile>
     <Compile Include="Handlers\GetImage.ashx.cs">
       <DependentUpon>GetImage.ashx</DependentUpon>
@@ -1207,7 +1223,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="DriverManage\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

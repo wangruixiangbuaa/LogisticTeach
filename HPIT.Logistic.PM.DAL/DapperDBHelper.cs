@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace HPIT.Logistic.PM.DAL
 {
+    /// <summary>
+    /// dapper 
+    /// </summary>
     public class DapperDBHelper
     {
         public static readonly string connStr = ConfigurationManager.ConnectionStrings["LogisticsDB"].ConnectionString;

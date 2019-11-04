@@ -7,9 +7,9 @@
     <!-- 页面meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>数据 - AdminLTE2定制版</title>
-    <meta name="description" content="AdminLTE2定制版">
-    <meta name="keywords" content="AdminLTE2定制版">
+    <title>物流数据管理系统</title>
+    <meta name="description" content="物流">
+    <meta name="keywords" content="物流管理">
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
     <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
@@ -134,130 +134,10 @@
                                 <li class="footer"><a href="#">See All Messages</a></li>
                             </ul>
                         </li>
-                        <!-- Notifications: style can be found in dropdown.less -->
-                        <li class="dropdown notifications-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-bell-o"></i>
-                        <span class="label label-warning">10</span>
-                    </a>
-                            <ul class="dropdown-menu">
-                                <li class="header">你有10个新消息</li>
-                                <li>
-                                    <!-- inner menu: contains the actual data -->
-                                    <ul class="menu">
-                                        <li>
-                                            <a href="#">
-                                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                    </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                        <i class="fa fa-warning text-yellow"></i> Very long description here that may not
-                                        fit into the page and may cause design problems
-                                    </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                        <i class="fa fa-users text-red"></i> 5 new members joined
-                                    </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                        <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                                    </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                        <i class="fa fa-user text-red"></i> You changed your username
-                                    </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="footer"><a href="#">View all</a></li>
-                            </ul>
-                        </li>
-                        <!-- Tasks: style can be found in dropdown.less -->
-                        <li class="dropdown tasks-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-flag-o"></i>
-                        <span class="label label-danger">9</span>
-                    </a>
-                            <ul class="dropdown-menu">
-                                <li class="header">你有9个新任务</li>
-                                <li>
-                                    <!-- inner menu: contains the actual data -->
-                                    <ul class="menu">
-                                        <li>
-                                            <!-- Task item -->
-                                            <a href="#">
-                                                <h3>
-                                                    Design some buttons
-                                                    <small class="pull-right">20%</small>
-                                                </h3>
-                                                <div class="progress xs">
-                                                    <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                        <span class="sr-only">20% Complete</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <!-- end task item -->
-                                        <li>
-                                            <!-- Task item -->
-                                            <a href="#">
-                                                <h3>
-                                                    Create a nice theme
-                                                    <small class="pull-right">40%</small>
-                                                </h3>
-                                                <div class="progress xs">
-                                                    <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                        <span class="sr-only">40% Complete</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <!-- end task item -->
-                                        <li>
-                                            <!-- Task item -->
-                                            <a href="#">
-                                                <h3>
-                                                    Some task I need to do
-                                                    <small class="pull-right">60%</small>
-                                                </h3>
-                                                <div class="progress xs">
-                                                    <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                        <span class="sr-only">60% Complete</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <!-- end task item -->
-                                        <li>
-                                            <!-- Task item -->
-                                            <a href="#">
-                                                <h3>
-                                                    Make beautiful transitions
-                                                    <small class="pull-right">80%</small>
-                                                </h3>
-                                                <div class="progress xs">
-                                                    <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                        <span class="sr-only">80% Complete</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <!-- end task item -->
-                                    </ul>
-                                </li>
-                                <li class="footer">
-                                    <a href="#">View all tasks</a>
-                                </li>
-                            </ul>
-                        </li>
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="../img/user2-160x160.jpg" class="user-image" alt="User Image">
+                        <img src="../img/user2-160x160.jpg" class="user-image" alt="User Image" />
                         <span class="hidden-xs">
                         <asp:Label ID="Label_UserName" runat="server" Text="Label"></asp:Label></span>
                     </a>
@@ -391,7 +271,7 @@
                     </a>
                         <ul class="treeview-menu">
                             <li id="admin-driver">
-                                <a href="#" class="menu" aurl="UserList.aspx" atitle="驾驶员列表" aid="userlist">
+                                <a href="#" class="menu" aurl="../DriverManage/DriverList.aspx" atitle="驾驶员列表" aid="driverlist">
                             <i class="fa fa-circle-o"></i> 驾驶员列表
                         </a>
                             </li>
@@ -482,24 +362,40 @@
             //基于bootstrap tab的自定义多标签的jquery实用插件，滚动条依赖jquery.scrollbar，图标依赖font-awesome
             nthTabs = $("#editor-tabs").nthTabs();
             nthTabs.addTab({
-                id:'a',
+                id:'userlist',
                 title: '用户管理',
                 content:'<iframe src="UserList.aspx" id="content"  style="width:100%;height:666px;"></iframe>',
-            }).setActTab("#a");
+            }).setActTab("#userlist");
 
             $(".select2").select2();
 
             $(".menu").click(function () {
-                var content = '<iframe src="url" id="content"  style="width:100%;height:666px;"></iframe>';
-                content = content.replace("url", $(this).attr("aurl"));
-                //nthTabs = $("#editor-tabs").nthTabs();
-                //$(this).attr("id")
-                nthTabs.addTab({
-                    id: $(this).attr("aid"),
-                    title: $(this).attr("atitle"),
-                    //content: '<iframe src="RoleList.aspx" id="content"  style="width:100%;height:666px;"></iframe>',
-                    content: content,
-                }).setActTab("#"+$(this).attr("aid"))
+                var allTabs = nthTabs.getTabList();
+                var selectId = $(this).attr("aid");
+                var IsExist = false;
+                var matchid = '';
+                $.each(allTabs,function(i,n)
+                {
+                    if (n.id == '#'+selectId) {
+                        IsExist = true;
+                        matchid = n.id;
+                    }
+                });
+                if (IsExist) {
+                    nthTabs.setActTab(matchid);
+                } else {
+                     var content = '<iframe src="url" id="content"  style="width:100%;height:666px;"></iframe>';
+                     content = content.replace("url", $(this).attr("aurl"));
+                     //nthTabs = $("#editor-tabs").nthTabs();
+                     //$(this).attr("id")
+                     nthTabs.addTab({
+                         id: $(this).attr("aid"),
+                         title: $(this).attr("atitle"),
+                         //content: '<iframe src="RoleList.aspx" id="content"  style="width:100%;height:666px;"></iframe>',
+                         content: content,
+                     }).setActTab("#"+$(this).attr("aid"))
+                }
+
             })
 
             // WYSIHTML5编辑器

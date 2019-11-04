@@ -25,13 +25,13 @@
     <link rel="stylesheet" href="plugins/adminLTE/css/AdminLTE.css" />
     <link rel="stylesheet" href="plugins/iCheck/square/blue.css" />
 </head>
-<body>
+<body style="background-image:url(../img/photo1.png);background-repeat:no-repeat;overflow-x:hidden;overflow-y:hidden;background-size:100%;">
         <div class="login-box">
         <div class="login-logo">
             <a href="all-admin-index.html"><b>数据</b>后台管理系统</a>
         </div>
-                    <div class="login-box-body">
-            <p class="login-box-msg">登录系统</p>
+            <div class="login-box-body">
+            <p class="login-box-msg"></p>
             <form runat="server">
                 <div class="form-group has-feedback">
                <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"></asp:TextBox>
