@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using HPIT.Logistic.PM.DAL;
 using HPIT.Logistic.PM.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+using System.Data;
+using System.Data.SqlClient;
 namespace HPIT.Logistic.PM.Test
 {
     [TestClass]
@@ -101,5 +102,52 @@ namespace HPIT.Logistic.PM.Test
                                                                                  where t.UserID not in @ids and t.RoleName=@roleName", new { ids,roleName="系统管理员" });
             Assert.AreNotEqual(0, result);
         }
+
+        [TestMethod]
+        public void TestMethodQuery4()
+        {
+            QueryPageModel queryPageModel = new QueryPageModel();
+            queryPageModel.OrderBy = "UserID";
+            queryPageModel.PageIndex = 1;
+            queryPageModel.PageSize = 5;
+            queryPageModel.QuerySql = @"(select *,
+                (select RoleName from [Role] where u.FK_RoleID = [Role].RoleID) as RoleName from [User] as u) uu where uu.RoleName = @RoleName)";
+            UserModel model = new UserModel();
+            model.RoleName = "系统管理员";
+            var result = PageDataHelper.QueryWithPage<UserModel>(queryPageModel,model);
+            Assert.AreNotEqual(0, result);
+        }
+
+
+        [TestMethod]
+        public void TestMethodQuery5()
+        {
+            QueryPageModel queryPageModel = new QueryPageModel();
+            queryPageModel.OrderBy = "UserID";
+            queryPageModel.PageIndex = 0;
+            queryPageModel.PageSize = 5;
+            queryPageModel.QuerySql = @"(select * from [User]) u where UserName like @UserName )";
+            UserModel model = new UserModel();
+            model.UserName = "张%";
+            var result = PageDataHelper.QueryWithPage<UserModel>(queryPageModel, model);
+            SqlParameter[] parameters = new SqlParameter[] { new SqlParameter("@UserName", "王%") };
+            var total = PageDataHelper.QueryTotalCount(queryPageModel,parameters);
+            Assert.AreNotEqual(0, result);
+        }
+
+        [TestMethod]
+        public void TestMethodQuery6()
+        {
+            QueryPageModel queryPageModel = new QueryPageModel();
+            queryPageModel.OrderBy = "UserID";
+            queryPageModel.PageIndex = 0;
+            queryPageModel.PageSize = 5;
+            queryPageModel.QuerySql = @"(select s.*,r.RoleName from [User] s left join [Role] r on s.FK_RoleID = r.RoleID ) u where u.UserName like '张%' )";
+            UserModel model = new UserModel();
+            var result = PageDataHelper.QueryWithPage<UserModel>(queryPageModel, model);
+            var total = PageDataHelper.QueryTotalCount(queryPageModel);
+            Assert.AreNotEqual(0, result);
+        }
+
     }
 }

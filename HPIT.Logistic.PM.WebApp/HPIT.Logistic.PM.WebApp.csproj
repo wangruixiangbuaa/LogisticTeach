@@ -70,10 +70,15 @@
     <Content Include="Admin\AddUser.aspx" />
     <Content Include="Admin\RoleList.aspx" />
     <Content Include="Admin\UserList.aspx" />
+    <Content Include="Charts\img\marker-icon.png" />
     <Content Include="Charts\MainCharts.aspx" />
-    <Content Include="Charts\svg.html" />
     <Content Include="css\base.css" />
     <Content Include="css\demo1.css" />
+    <Content Include="css\leaflet\images\layers-2x.png" />
+    <Content Include="css\leaflet\images\layers.png" />
+    <Content Include="css\leaflet\images\marker-icon-2x.png" />
+    <Content Include="css\leaflet\images\marker-icon.png" />
+    <Content Include="css\leaflet\images\marker-shadow.png" />
     <Content Include="css\leaflet\leaflet.css" />
     <Content Include="css\nth.tabs.css" />
     <Content Include="css\nth.tabs.min.css" />

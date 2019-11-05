@@ -355,7 +355,7 @@
             option = {
                 //        backgroundColor: '#404a59',
                 title: {
-                    text: '物流管理之模拟空运',
+                    text: '物流管理之运输路线',
                     subtext: '',
                     left: 'center',
                     textStyle: {
