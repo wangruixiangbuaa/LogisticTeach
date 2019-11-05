@@ -14,15 +14,17 @@ namespace HPIT.Logistic.PM.WebApp.TruckManage
     {
         public int pageIndex = 0;
         public int pageSize = 5;
+        public int total = 0;
+        public TruckBll bll = new TruckBll();
         protected void Page_Load(object sender, EventArgs e)
         {
-            string teamName = TextBox_TeamName.Text;
-            Repeater1.DataSource = TruckDal.Instance.GetDynamicList(teamName);
-            Repeater1.DataBind();
-
-            //显示页数列表
-            Repeater2.DataSource = PageList();
-            Repeater2.DataBind();
+            //是否回发
+                string teamName = TextBox_TeamName.Text;
+                Repeater1.DataSource = bll.GetTrucksWithPage(pageIndex, pageSize, out total);
+                Repeater1.DataBind();
+                //显示页数列表
+                Repeater2.DataSource = PageList();
+                Repeater2.DataBind();
 
         }
 
@@ -32,7 +34,6 @@ namespace HPIT.Logistic.PM.WebApp.TruckManage
         /// <returns></returns>
         public List<PageModel> PageList()
         {
-            TruckBll bll = new TruckBll();
             int total = 0;
             //查询数据的总数
             bll.GetTrucksWithPage(pageIndex,pageSize,out total);
@@ -58,8 +59,11 @@ namespace HPIT.Logistic.PM.WebApp.TruckManage
 
         protected void Repeater2_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
+            //页码切换数据的事件处理
             int pageIndex = Convert.ToInt32(e.CommandArgument);
-
+            //重新绑定列表绑定的数据.
+            Repeater1.DataSource = bll.GetTrucksWithPage(pageIndex, pageSize, out total);
+            Repeater1.DataBind();
         }
     }
 }

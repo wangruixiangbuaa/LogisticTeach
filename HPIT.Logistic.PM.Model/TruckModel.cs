@@ -11,5 +11,10 @@ namespace HPIT.Logistic.PM.Model
         public string Number { get; set; }
 
         public string Type { get; set; }
+
+
+        public DateTime BuyDate { get; set; }
+        
+        public DateTime CheckInTime { get; set; }
     }
 }
