@@ -70,8 +70,11 @@
     <Content Include="Admin\AddUser.aspx" />
     <Content Include="Admin\RoleList.aspx" />
     <Content Include="Admin\UserList.aspx" />
+    <Content Include="Charts\MainCharts.aspx" />
+    <Content Include="Charts\svg.html" />
     <Content Include="css\base.css" />
     <Content Include="css\demo1.css" />
+    <Content Include="css\leaflet\leaflet.css" />
     <Content Include="css\nth.tabs.css" />
     <Content Include="css\nth.tabs.min.css" />
     <Content Include="css\style.css" />
@@ -110,6 +113,7 @@
     <Content Include="js\aurora.js" />
     <Content Include="js\coalesce.js" />
     <Content Include="js\demo.js" />
+    <Content Include="js\echarts\main.min.js" />
     <Content Include="js\noise.min.js" />
     <Content Include="js\nth.tabs.js" />
     <Content Include="js\nth.tabs.min.js" />
@@ -1112,6 +1116,13 @@
     </Compile>
     <Compile Include="Admin\UserList.aspx.designer.cs">
       <DependentUpon>UserList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\MainCharts.aspx.cs">
+      <DependentUpon>MainCharts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Charts\MainCharts.aspx.designer.cs">
+      <DependentUpon>MainCharts.aspx</DependentUpon>
     </Compile>
     <Compile Include="DriverManage\DriverList.aspx.cs">
       <DependentUpon>DriverList.aspx</DependentUpon>

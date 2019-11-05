@@ -215,7 +215,7 @@
                 <ul class="sidebar-menu">
                     <li class="header">菜单</li>
 
-                    <li id="admin-index"><a href="all-admin-index.html"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
+                    <li id="admin-index"><a href="../Charts/MainCharts.aspx"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
 
                     <!-- 菜单 -->
                     <li class="treeview">
@@ -303,7 +303,7 @@
             <div class="pull-right hidden-xs">
                 <b>Version</b> 1.0.8
             </div>
-            <strong>Copyright &copy; 2014-2017 <a href="http://www.itcast.cn">研究院研发部</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; 2014-2020 <a href="http://www.itcast.cn">.NET研究院研发部</a>.</strong> All rights reserved.
         </footer>
         <!-- 底部导航 /-->
 
@@ -362,10 +362,10 @@
             //基于bootstrap tab的自定义多标签的jquery实用插件，滚动条依赖jquery.scrollbar，图标依赖font-awesome
             nthTabs = $("#editor-tabs").nthTabs();
             nthTabs.addTab({
-                id:'userlist',
-                title: '用户管理',
-                content:'<iframe src="UserList.aspx" id="content"  style="width:100%;height:666px;"></iframe>',
-            }).setActTab("#userlist");
+                id:'cnCharts',
+                title: '主页',
+                content:'<iframe src="../Charts/MainCharts.aspx" id="content"  style="width:100%;height:666px;"></iframe>',
+            }).setActTab("#cnCharts");
 
             $(".select2").select2();
 
