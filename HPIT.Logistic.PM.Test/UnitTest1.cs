@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using HPIT.Logistic.PM.DAL;
 using HPIT.Logistic.PM.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -15,6 +16,24 @@ namespace HPIT.Logistic.PM.Test
             int total = 0;
             var result = dal.GetTeams(0,3,out total);
         }
+
+
+        [TestMethod]
+        public void TestMethodPage()
+        {
+            TruckDal dal = new TruckDal();
+            int totalCount = 0;
+            List<TruckModel> result = dal.GetTrucks(1,5,out totalCount);
+        }
+
+        [TestMethod]
+        public void TestMethoddtPage()
+        {
+            TruckDal dal = new TruckDal();
+            int totalCount = 0;
+            var result = dal.GetDtTrucks(1, 5, out totalCount);
+        }
+
 
 
         [TestMethod]

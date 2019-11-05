@@ -63,13 +63,18 @@ namespace HPIT.Logistic.PM.DAL
                 }
         }
 
-
-        public static SqlDataReader ExcuteSqlDataReaderProc(string sql, SqlParameter[] sqlParameters)
+        /// <summary>
+        /// 调用存储过程
+        /// </summary>
+        /// <param name="proName"></param>
+        /// <param name="sqlParameters"></param>
+        /// <returns></returns>
+        public static SqlDataReader ExcuteSqlDataReaderProc(string proName, SqlParameter[] sqlParameters)
         {
             //创建连接
             SqlConnection connection = new SqlConnection(connStr);
             //创建命令
-            using (SqlCommand command = new SqlCommand(sql, connection))
+            using (SqlCommand command = new SqlCommand(proName, connection))
             {
                 //执行
                 if (connection.State == ConnectionState.Closed)
@@ -81,7 +86,38 @@ namespace HPIT.Logistic.PM.DAL
                 //添加参数
                 command.Parameters.AddRange(sqlParameters);
                 //返回结果,及时关闭掉连接
-                return command.ExecuteReader(CommandBehavior.CloseConnection);
+                return command.ExecuteReader();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="proName"></param>
+        /// <param name="sqlParameters"></param>
+        /// <returns></returns>
+        public static DataTable ExcuteDataTableProc(string proName, SqlParameter[] sqlParameters)
+        {
+            //创建连接
+            SqlConnection connection = new SqlConnection(connStr);
+            //创建命令
+            using (SqlCommand command = new SqlCommand(proName, connection))
+            {
+                //执行
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
+                //设置查询方式是存储过程。
+                command.CommandType = CommandType.StoredProcedure;
+                //添加参数
+                command.Parameters.AddRange(sqlParameters);
+                //返回结果,及时关闭掉连接
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = command;
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
             }
         }
 
