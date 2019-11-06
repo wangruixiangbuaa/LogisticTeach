@@ -1,4 +1,5 @@
-﻿using HPIT.Logistic.PM.BLL;
+﻿using HPIT.Data.Core;
+using HPIT.Logistic.PM.BLL;
 using HPIT.Logistic.PM.DAL;
 using HPIT.Logistic.PM.Model;
 using System;
@@ -16,53 +17,43 @@ namespace HPIT.Logistic.PM.WebApp.TruckManage
         public int pageSize = 5;
         public int total = 0;
         public TruckBll bll = new TruckBll();
+        public TruckDal dal = new TruckDal();
         protected void Page_Load(object sender, EventArgs e)
         {
             //是否回发
+            if (!IsPostBack)
+            {
                 string teamName = TextBox_TeamName.Text;
-                Repeater1.DataSource = bll.GetTrucksWithPage(pageIndex, pageSize, out total);
+                DateTime time = string.IsNullOrEmpty(TextBox_CreateTime.Text) ? DateTime.Now : Convert.ToDateTime(TextBox_CreateTime.Text);
+                Repeater1.DataSource = dal.GetTruckList(pageIndex, pageSize, teamName,time, out total);
                 Repeater1.DataBind();
                 //显示页数列表
-                Repeater2.DataSource = PageList();
+                Repeater2.DataSource = PageDataHelper.GetPageList(total, pageSize);
                 Repeater2.DataBind();
-
-        }
-
-        /// <summary>
-        /// 获取页数列表
-        /// </summary>
-        /// <returns></returns>
-        public List<PageModel> PageList()
-        {
-            int total = 0;
-            //查询数据的总数
-            bll.GetTrucksWithPage(pageIndex,pageSize,out total);
-            //构造repeater的数据源
-            int pageCount = total % pageSize == 0 ? total / pageSize : total / pageSize + 1;
-            Label_total.Text = "共"+pageCount+"页";
-            List<PageModel> pages = new List<PageModel>();
-            for (int  i = 0;  i < pageCount;  i++)
-            {
-                PageModel page = new PageModel();
-                page.PageIndex = i;
-                pages.Add(page);
             }
-            return pages;
+
         }
 
         protected void Button_Search_Click(object sender, EventArgs e)
         {
             string teamName = TextBox_TeamName.Text;
-            Repeater1.DataSource = TruckDal.Instance.GetDynamicList(teamName);
+            DateTime time = string.IsNullOrEmpty(TextBox_CreateTime.Text) ? DateTime.Now : Convert.ToDateTime(TextBox_CreateTime.Text);
+            //重新绑定列表绑定的数据.
+            Repeater1.DataSource = dal.GetTruckList(pageIndex, pageSize, teamName, time, out total);
             Repeater1.DataBind();
+            //显示页数列表
+            Repeater2.DataSource = PageDataHelper.GetPageList(total, pageSize);
+            Repeater2.DataBind();
         }
 
         protected void Repeater2_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             //页码切换数据的事件处理
             int pageIndex = Convert.ToInt32(e.CommandArgument);
+            string teamName = TextBox_TeamName.Text;
+            DateTime time = string.IsNullOrEmpty(TextBox_CreateTime.Text) ? DateTime.Now : Convert.ToDateTime(TextBox_CreateTime.Text);
             //重新绑定列表绑定的数据.
-            Repeater1.DataSource = bll.GetTrucksWithPage(pageIndex, pageSize, out total);
+            Repeater1.DataSource = dal.GetTruckList(pageIndex, pageSize, teamName, time, out total);
             Repeater1.DataBind();
         }
     }

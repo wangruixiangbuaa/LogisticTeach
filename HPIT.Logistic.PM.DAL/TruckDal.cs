@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using HPIT.Data.Core;
+
 namespace HPIT.Logistic.PM.DAL
 {
     public class TruckDal
@@ -69,24 +71,31 @@ namespace HPIT.Logistic.PM.DAL
             return truckList;
         }
 
-        public DataTable GetDtTrucks(int pageIndex, int pageSize, out int totalCount)
+        public List<TruckModel> GetTruckList(int pageIndex,int pageSize,string number,DateTime dateTime,out int total)
         {
-            //初始化输出参数
-            totalCount = 0;
-            string proName = "QueryTruckProc";
-            SqlParameter[] sqlParameters = new SqlParameter[] {
-                 new SqlParameter("@PageIndex",pageIndex),
-                 new SqlParameter("@PageSize",pageSize),
-                 new SqlParameter("@TotalCount",SqlDbType.Int)
-            };
-            //设置参数是输出参数，Output
-            sqlParameters[2].Direction = ParameterDirection.Output;
-            //调用dbHelper 存储过程方法
-            DataTable dt = DBHelper.ExcuteDataTableProc(proName, sqlParameters);
-            //获取参数的值
-            totalCount = Convert.ToInt32(sqlParameters[2].Value);
-            //返回结果list
-            return dt;
+            total = 0;
+            QueryPageModel queryPageModel = new QueryPageModel();
+            queryPageModel.OrderBy = "TruckID";
+            queryPageModel.PageIndex = pageIndex;
+            queryPageModel.PageSize = pageSize;
+            queryPageModel.QuerySql = @"(select * from [Truck]) u where 1=1 {0} )";
+            string sqlWhere = "";
+            TruckModel model = new TruckModel();
+            if (!string.IsNullOrEmpty(number))
+            {
+                sqlWhere += " and Number like @Number";
+                model.Number = number+"%";
+            }
+            if (dateTime > new DateTime(1950, 1, 1))
+            {
+                sqlWhere += " and CheckInTime < @CheckInTime";
+                model.CheckInTime = dateTime;
+            }
+            queryPageModel.QuerySql = string.Format(queryPageModel.QuerySql, sqlWhere);
+           
+            var result = PageDataHelper.QueryWithPage<TruckModel>(queryPageModel, model);
+            total = PageDataHelper.QueryTotalCount(queryPageModel, model);
+            return result.ToList();
         }
     }
 }

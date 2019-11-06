@@ -62,6 +62,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HPIT.Data.Core\HPIT.Data.Core.csproj">
+      <Project>{8fbcdea4-4472-4398-9e98-0a30a83dfc6d}</Project>
+      <Name>HPIT.Data.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HPIT.Logistic.PM.DAL\HPIT.Logistic.PM.DAL.csproj">
       <Project>{1715e8ab-02ef-4b16-9022-3e32b85415fe}</Project>
       <Name>HPIT.Logistic.PM.DAL</Name>

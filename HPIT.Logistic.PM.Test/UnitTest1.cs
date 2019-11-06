@@ -5,6 +5,8 @@ using HPIT.Logistic.PM.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Data;
 using System.Data.SqlClient;
+using HPIT.Data.Core;
+
 namespace HPIT.Logistic.PM.Test
 {
     [TestClass]
@@ -128,10 +130,9 @@ namespace HPIT.Logistic.PM.Test
             queryPageModel.PageSize = 5;
             queryPageModel.QuerySql = @"(select * from [User]) u where UserName like @UserName )";
             UserModel model = new UserModel();
-            model.UserName = "张%";
+            model.UserName = "王%";
             var result = PageDataHelper.QueryWithPage<UserModel>(queryPageModel, model);
-            SqlParameter[] parameters = new SqlParameter[] { new SqlParameter("@UserName", "王%") };
-            var total = PageDataHelper.QueryTotalCount(queryPageModel,parameters);
+            var total = PageDataHelper.QueryTotalCount(queryPageModel,model);
             Assert.AreNotEqual(0, result);
         }
 
@@ -145,7 +146,7 @@ namespace HPIT.Logistic.PM.Test
             queryPageModel.QuerySql = @"(select s.*,r.RoleName from [User] s left join [Role] r on s.FK_RoleID = r.RoleID ) u where u.UserName like '张%' )";
             UserModel model = new UserModel();
             var result = PageDataHelper.QueryWithPage<UserModel>(queryPageModel, model);
-            var total = PageDataHelper.QueryTotalCount(queryPageModel);
+            var total = PageDataHelper.QueryTotalCount<UserModel>(queryPageModel,model);
             Assert.AreNotEqual(0, result);
         }
 

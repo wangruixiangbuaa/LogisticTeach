@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HPIT.Logistic.PM.DAL
+namespace HPIT.Data.Core
 {
     /// <summary>
     /// dapper 
@@ -49,6 +49,18 @@ namespace HPIT.Logistic.PM.DAL
             return connection.Query<T>(sql, model).ToList();
         }
 
+        /// <summary>
+        /// 根据查询条件查询数据
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sql"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public int ExcuteScalarQuery<T>(string sql, T model)
+        {
+            IDbConnection connection = new SqlConnection(connStr);
+            return connection.ExecuteScalar<int>(sql, model);
+        }
 
         /// <summary>
         /// 根据不同的查询条件，查询不同的结果

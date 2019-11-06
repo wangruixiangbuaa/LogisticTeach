@@ -1242,6 +1242,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HPIT.Data.Core\HPIT.Data.Core.csproj">
+      <Project>{8fbcdea4-4472-4398-9e98-0a30a83dfc6d}</Project>
+      <Name>HPIT.Data.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HPIT.Logistic.PM.BLL\HPIT.Logistic.PM.BLL.csproj">
       <Project>{35752159-cf57-4efe-bc05-2e0b9b0edd21}</Project>
       <Name>HPIT.Logistic.PM.BLL</Name>

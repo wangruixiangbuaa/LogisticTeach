@@ -98,8 +98,11 @@
                         <div class="has-feedback">
                             <ul>
                                 <li>
-                                    <label>车队名：</label>
+                                    <label>车辆编号：</label>
                                     <asp:TextBox ID="TextBox_TeamName" CssClass="form-control input-sm searchInput" runat="server"></asp:TextBox></li>
+                                <li>
+                                    <label>创建日期：</label>
+                                    <asp:TextBox ID="TextBox_CreateTime" CssClass="form-control input-sm searchInput" runat="server"></asp:TextBox></li>
                                 <li>
                                     <asp:Button ID="Button_Search" CssClass="btn btn-primary" runat="server" Text="查询" OnClick="Button_Search_Click" /></li>
                             </ul>
@@ -112,7 +115,7 @@
                                     <th>车辆编号</th>
                                     <th>购买日期</th>
                                     <th>类型</th>
-<%--                                    <th>长度</th>
+<%--                                <th>长度</th>
                                     <th>吨位</th>
                                     <th>车队名</th>
                                     <th>状态</th>--%>
@@ -144,7 +147,7 @@
                         <asp:Repeater ID="Repeater2" runat="server" OnItemCommand="Repeater2_ItemCommand">
                             <ItemTemplate>
                                <li>
-                                   <asp:LinkButton ID="LinkButton3" CommandArgument='<%#Eval("PageIndex") %>' runat="server"><%#Eval("PageIndex")%></asp:LinkButton>
+                                   <asp:LinkButton ID="LinkButton3" CommandArgument='<%#Eval("PageIndex") %>' runat="server"><%# (int)Eval("PageIndex")+1%></asp:LinkButton>
                                </li>
                             </ItemTemplate>
                         </asp:Repeater>
@@ -202,7 +205,7 @@
             $(document).ready(function () {
                 $('#TextBox_CreateTime').datepicker({
                     autoclose: true,
-                    format: 'yyyy-dd-mm'
+                    format: 'yyyy-mm-dd'
                 });
             })
         </script>

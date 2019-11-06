@@ -42,10 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DynamicModel.cs" />
-    <Compile Include="PageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueryPageModel.cs" />
     <Compile Include="RoleModel.cs" />
     <Compile Include="TruckModel.cs" />
     <Compile Include="TruckTeamModel.cs" />

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1715E8AB-02EF-4B16-9022-3E32B85415FE}</ProjectGuid>
+    <ProjectGuid>{8FBCDEA4-4472-4398-9E98-0A30A83DFC6D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HPIT.Logistic.PM.DAL</RootNamespace>
-    <AssemblyName>HPIT.Logistic.PM.DAL</AssemblyName>
+    <RootNamespace>HPIT.Data.Core</RootNamespace>
+    <AssemblyName>HPIT.Data.Core</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -37,7 +37,6 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Dynamic" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,24 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBHelper.cs" />
-    <Compile Include="DriverDal.cs" />
-    <Compile Include="GoodsDal.cs" />
+    <Compile Include="DapperDBHelper.cs" />
+    <Compile Include="Model\DynamicModel.cs" />
+    <Compile Include="Model\PageModel.cs" />
+    <Compile Include="Model\QueryPageModel.cs" />
+    <Compile Include="PageDataHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RoleDal.cs" />
-    <Compile Include="TeamDal.cs" />
-    <Compile Include="TruckDal.cs" />
-    <Compile Include="UserDal.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HPIT.Data.Core\HPIT.Data.Core.csproj">
-      <Project>{8fbcdea4-4472-4398-9e98-0a30a83dfc6d}</Project>
-      <Name>HPIT.Data.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HPIT.Logistic.PM.Model\HPIT.Logistic.PM.Model.csproj">
-      <Project>{4d0ef1e6-da6e-4929-ad39-3c500881b865}</Project>
-      <Name>HPIT.Logistic.PM.Model</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

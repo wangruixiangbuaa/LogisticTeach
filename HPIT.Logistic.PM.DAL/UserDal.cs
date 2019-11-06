@@ -1,4 +1,5 @@
-﻿using HPIT.Logistic.PM.Model;
+﻿using HPIT.Data.Core;
+using HPIT.Logistic.PM.Model;
 using HPIT.Logistics.PM.Model;
 using System;
 using System.Collections.Generic;

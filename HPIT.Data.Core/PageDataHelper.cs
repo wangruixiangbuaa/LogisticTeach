@@ -5,14 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
-using HPIT.Logistic.PM.Model;
 
-namespace HPIT.Logistic.PM.DAL
+namespace HPIT.Data.Core
 {
     public class PageDataHelper
     {
         /// <summary>
-        /// 
+        /// 查询总数
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="queryPageModel"></param>
@@ -29,18 +28,39 @@ namespace HPIT.Logistic.PM.DAL
             return result;
         }
 
-        public static int QueryTotalCount(QueryPageModel queryPageModel,params SqlParameter[] sqlParameters)
+
+        /// <summary>
+        /// 查询总条数
+        /// </summary>
+        /// <param name="queryPageModel"></param>
+        /// <param name="sqlParameters"></param>
+        /// <returns></returns>
+        public static int QueryTotalCount<T>(QueryPageModel queryPageModel,T model)
         {
             string sqlBase = string.Format(@"(select count(*) from {0}",queryPageModel.QuerySql);
-            object count = DBHelper.ExcuteScalar(sqlBase,sqlParameters);
-            if (count != null)
+            int count = DapperDBHelper.Instance.ExcuteScalarQuery<T>(sqlBase, model);
+            return count;
+        }
+
+        /// <summary>
+        /// 获取分页的列表
+        /// </summary>
+        /// <param name="total"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public static List<PageModel> GetPageList(int total,int pageSize)
+        {
+            int pageCount = total % pageSize == 0 ? total / pageSize : total / pageSize + 1;
+            List<PageModel> pages = new List<PageModel>();
+            for (int i = 0; i < pageCount; i++)
             {
-                return Convert.ToInt32(count);
+                pages.Add(new PageModel()
+                {
+                    PageIndex = i,
+                    PageSize = pageSize
+                });
             }
-            else
-            {
-                return 0;
-            }
+            return pages;
         }
     }
 }

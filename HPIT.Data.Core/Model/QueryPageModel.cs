@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HPIT.Logistic.PM.Model
+namespace HPIT.Data.Core
 {
     public class QueryPageModel
     {

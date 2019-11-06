@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using HPIT.Data.Core;
 using HPIT.Logistic.PM.Model;
 using System;
 using System.Collections.Generic;
