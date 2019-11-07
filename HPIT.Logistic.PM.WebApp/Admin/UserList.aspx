@@ -134,6 +134,19 @@
                         </FooterTemplate>
                         </asp:Repeater>
                     </div>
+                   <%-- 分页的代码--%>
+                    <nav aria-label="Page navigation" style="float:right">
+                    <ul class="pagination">
+                        <asp:Repeater ID="Repeater2" runat="server" OnItemCommand="Repeater2_ItemCommand">
+                            <ItemTemplate>
+                               <li>
+                                   <asp:LinkButton ID="LinkButton3" CommandArgument='<%#Eval("PageIndex") %>' runat="server"><%# (int)Eval("PageIndex")+1%></asp:LinkButton>
+                               </li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </ul>
+                    <asp:Label ID="Label_total" runat="server"></asp:Label>
+                </nav>
                 </div>
             </section>
     <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>

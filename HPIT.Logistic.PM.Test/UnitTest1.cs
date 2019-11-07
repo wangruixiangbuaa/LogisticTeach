@@ -34,7 +34,7 @@ namespace HPIT.Logistic.PM.Test
         {
             TruckDal dal = new TruckDal();
             int totalCount = 0;
-            var result = dal.GetDtTrucks(1, 5, out totalCount);
+            //var result = dal.GetDtTrucks(1, 5, out totalCount);
         }
 
 

@@ -10,7 +10,7 @@ namespace HPIT.Logistic.PM.DAL
     public class DBHelper
     {
         //读取连接字符串
-        public static readonly string connStr = ConfigurationManager.ConnectionStrings["LogisticsDB"].ConnectionString;
+        public static readonly string connStr = ConfigurationManager.ConnectionStrings["SqlDBAddress"].ConnectionString;
         /// <summary>
         /// 查询首行首列的方法
         /// </summary>

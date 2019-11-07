@@ -84,7 +84,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="../img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                                    <img src="../img/user3-128x128.jpg" class="img-circle" alt="User Image"/>
                                                 </div>
                                                 <h4>
                                                     团队消息
@@ -108,7 +108,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="../img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                                    <img src="../img/user3-128x128.jpg" class="img-circle" alt="User Image" />
                                                 </div>
                                                 <h4>
                                                     Sales Department
@@ -120,7 +120,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="../img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                                    <img src="../img/user4-128x128.jpg" class="img-circle" alt="User Image" />
                                                 </div>
                                                 <h4>
                                                     Reviewers
@@ -144,7 +144,7 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                    <img src="../img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                    <img src="../img/user2-160x160.jpg" class="img-circle" alt="User Image" />
 
                                     <p>
                                         <asp:Label ID="Label_UserName2" runat="server" Text="Label"></asp:Label> - 数据管理员
@@ -282,6 +282,21 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="treeview">
+                    <a href="#">
+                    <i class="fa fa-folder"></i> <span>统计分析</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                    </a>
+                        <ul class="treeview-menu">
+                            <li id="admin-mappoint">
+                                <a href="#" class="menu" aurl="../Charts/MapPoint.aspx" atitle="运输点统计" aid="mappointStatics">
+                            <i class="fa fa-circle-o"></i> 物流运输点统计
+                        </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </section>
             <!-- /.sidebar -->
@@ -303,12 +318,12 @@
             <div class="pull-right hidden-xs">
                 <b>Version</b> 1.0.8
             </div>
-            <strong>Copyright &copy; 2014-2020 <a href="http://www.itcast.cn">.NET研究院研发部</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; 2014-2020 <a href="http://www.itcast.cn">.NET研发部</a>.</strong> All rights reserved.
         </footer>
         <!-- 底部导航 /-->
 
     </div>
-     <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
     <script src="../plugins/jQueryUI/jquery-ui.min.js"></script>
     <script>
         $.widget.bridge('uibutton', $.ui.button);

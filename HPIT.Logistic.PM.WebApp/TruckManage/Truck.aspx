@@ -52,11 +52,11 @@
                     width: 170px;
                 }
 
-                    .has-feedback ul li input[type=submit] {
-                        float: left;
-                        width: 100px;
-                        height: 31px;
-                    }
+                .has-feedback ul li input[type=submit] {
+                    float: left;
+                    width: 100px;
+                    height: 31px;
+                }
 
                 .has-feedback ul li select {
                     float: left;

@@ -1,4 +1,6 @@
-﻿using HPIT.Logistic.PM.BLL;
+﻿using HPIT.Data.Core;
+using HPIT.Logistic.PM.BLL;
+using HPIT.Logistic.PM.DAL;
 using HPIT.Logistic.PM.Model;
 using System;
 using System.Collections.Generic;
@@ -12,7 +14,11 @@ namespace HPIT.Logistic.PM.WebApp.Admin
     public partial class UserList : System.Web.UI.Page
     {
         UserBll bll = new UserBll();
+        UserDal dal = new UserDal();
         RoleBll roleBll = new RoleBll();
+        int pageIndex = 0;
+        int pageSize = 5;
+        int total = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             //判断是否重新进行请求
@@ -49,10 +55,15 @@ namespace HPIT.Logistic.PM.WebApp.Admin
             string roleName = DropDownList_Roles.SelectedItem.Text;
             //查询数据
             DateTime bornTime = string.IsNullOrEmpty(time) ? DateTime.Now : Convert.ToDateTime(time);
-            List<UserModel> result = bll.GetUsers(account, bornTime, roleName);
+            UserModel model = new UserModel();
+            model.Account = account;
+            List<UserModel> result = dal.GetNewUserPageList(pageIndex,pageSize,model,out total);
             //把数据绑定到界面 repeater
             Repeater1.DataSource = result;
             Repeater1.DataBind();
+            //页码repeater2
+            Repeater2.DataSource = PageDataHelper.GetPageList(total,pageSize);
+            Repeater2.DataBind();
         }
 
         /// <summary>
@@ -85,6 +96,17 @@ namespace HPIT.Logistic.PM.WebApp.Admin
                     Response.Write("<script>alert('删除失败，请重新删除！')</script>");
                 }
             }
+        }
+
+        /// <summary>
+        /// 页码的事件处理
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="e"></param>
+        protected void Repeater2_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            pageIndex = Convert.ToInt32(e.CommandArgument);
+            SearchUsers();
         }
     }
 }

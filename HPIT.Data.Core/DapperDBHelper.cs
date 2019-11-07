@@ -15,7 +15,7 @@ namespace HPIT.Data.Core
     /// </summary>
     public class DapperDBHelper
     {
-        public static readonly string connStr = ConfigurationManager.ConnectionStrings["LogisticsDB"].ConnectionString;
+        public static readonly string connStr = ConfigurationManager.ConnectionStrings["SqlDBAddress"].ConnectionString;
         public static DapperDBHelper Instance = new DapperDBHelper();
         /// <summary>
         /// 

@@ -21,7 +21,7 @@ namespace HPIT.Data.Core
         {
             string sqlBase = @"select * from (select *,row_number()over(order by {0}) as rownmber from 
                                {1} result 
-                               where result.rownmber>={2} and result.rownmber<= {3}";
+                               where result.rownmber>{2} and result.rownmber<= {3}";
             string finalSql = string.Format(sqlBase, queryPageModel.OrderBy, queryPageModel.QuerySql, queryPageModel.PageIndex * queryPageModel.PageSize, (queryPageModel.PageIndex + 1) * queryPageModel.PageSize);
             //用dapperDbHelper 查询数据
             IList<T> result = DapperDBHelper.Instance.ExcuteQuery<T>(finalSql, model);
