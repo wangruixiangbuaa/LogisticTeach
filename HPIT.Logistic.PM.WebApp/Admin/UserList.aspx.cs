@@ -59,11 +59,13 @@ namespace HPIT.Logistic.PM.WebApp.Admin
             model.Account = account;
             model.RoleName = roleName;
             model.CheckInTime = bornTime;
+            //调用dal层分页查询代码
             List<UserModel> result = dal.GetNewUserPageList(pageIndex,pageSize,model,out total);
             //把数据绑定到界面 repeater
             Repeater1.DataSource = result;
             Repeater1.DataBind();
             //页码repeater2
+            //查询页码的数据
             Repeater2.DataSource = PageDataHelper.GetPageList(total,pageSize);
             Repeater2.DataBind();
         }

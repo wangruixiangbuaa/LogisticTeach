@@ -258,27 +258,35 @@ namespace HPIT.Logistic.PM.DAL
         public List<UserModel> GetNewUserPageList(int pageIndex,int pageSize,UserModel userModel,out int total)
         {
             total = 0;
+            //创建一个分页查询的model
             QueryPageModel model = new QueryPageModel();
             model.PageIndex = pageIndex;
             model.PageSize = pageSize;
+            //排序字段的名字
             model.OrderBy = "UserID";
-            model.QuerySql = @"(select *,
-                (select RoleName from [Role] where u.FK_RoleID = [Role].RoleID) as RoleName from [User] as u) uu where 1=1 {0})";
+            //定义查询的sql语句
+            //model.QuerySql = @"(select * from [User]) u where 1=1 {0})";
+            //model.QuerySql = @"(select *,
+            //    (select RoleName from [Role] where u.FK_RoleID = [Role].RoleID) as RoleName from [User] as u) uu where 1=1 {0})";
+            model.QuerySql = @"(select s.*,r.RoleName from [User] s left join [Role] r on s.FK_RoleID = r.RoleID ) u where 1=1 {0})";
             string sqlWhere = "";
             if (!string.IsNullOrEmpty(userModel.Account))
             {
-                sqlWhere += " and uu.Account=@Account ";
+                sqlWhere += " and u.Account=@Account ";
             }
             if (!string.IsNullOrEmpty(userModel.UserName))
             {
-                sqlWhere += " and uu.UserName like @UserName ";
+                sqlWhere += " and u.UserName like @UserName ";
             }
-            if (!string.IsNullOrEmpty(userModel.RoleName)&&userModel.RoleName!="请选择")
+            if (!string.IsNullOrEmpty(userModel.RoleName) && userModel.RoleName != "请选择")
             {
-                sqlWhere += " and uu.RoleName=@RoleName";
+                sqlWhere += " and u.RoleName=@RoleName";
             }
+            //拼接查询语句与where条件。
             model.QuerySql = string.Format(model.QuerySql, sqlWhere);
+            //调用分页查询的帮助类，查询数据。
             List<UserModel> users = PageDataHelper.QueryWithPage<UserModel>(model,userModel).ToList();
+            //查询当前的sql 总条数。
             total = PageDataHelper.QueryTotalCount<UserModel>(model,userModel);
             return users;
         }
