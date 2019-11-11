@@ -273,7 +273,7 @@ namespace HPIT.Logistic.PM.DAL
             {
                 sqlWhere += " and uu.UserName like @UserName ";
             }
-            if (!string.IsNullOrEmpty(userModel.RoleName))
+            if (!string.IsNullOrEmpty(userModel.RoleName)&&userModel.RoleName!="请选择")
             {
                 sqlWhere += " and uu.RoleName=@RoleName";
             }

@@ -57,6 +57,8 @@ namespace HPIT.Logistic.PM.WebApp.Admin
             DateTime bornTime = string.IsNullOrEmpty(time) ? DateTime.Now : Convert.ToDateTime(time);
             UserModel model = new UserModel();
             model.Account = account;
+            model.RoleName = roleName;
+            model.CheckInTime = bornTime;
             List<UserModel> result = dal.GetNewUserPageList(pageIndex,pageSize,model,out total);
             //把数据绑定到界面 repeater
             Repeater1.DataSource = result;
